@@ -2,7 +2,7 @@ import random
 import sys
 import os
 
-#below is basic 
+#below is basic input and roll functionality
 
 name=str(input('Name:')) #user inputs
 bonus=int(input('Bonus:'))
