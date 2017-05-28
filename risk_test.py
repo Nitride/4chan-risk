@@ -1,6 +1,4 @@
 import random
-import sys
-import os
 
 #below is basic input and roll functionality
 
@@ -58,21 +56,21 @@ cal = 20 ts
 ore = 10 ts
 was = 5 ts
 '''
-#all below is a work in progress
 
-Ts=rollpnt+bonus
-fill={'cal':20,'ore':10,'nev':5,'was':5}
-spill=Ts-fill[action]
 
-while (spill)>0:
-    print(action, 'filled')
+Ts=rollpnt+bonus #how many territory points player has
+fill={'cal':20,'ore':10,'nev':5,'was':5} #how much states are worth
+spill=Ts-fill[action] #spill is the difference between T points and state they are filling
+
+while (spill)>0: #loops as long as there is a spill
     print('spill', spill)
     action = input('spill where?:')
-    if (spill-fill[action]) <= 0:
+    if (spill-fill[action])>=0: #if spill-state fill is at least 0
         print(action, 'filled')
-    if (spill-fill[action])>0:
-        print(spill-fill[action], 'left in', action)
-if spill==0:
+    if (spill-fill[action])<0: #if spill-state fill is less than 0
+        print(-1*(spill-fill[action]), 'left in', action)
+    spill=spill-fill[action] #redefines spill to old spill-old state filled
+if spill==0: #if just enough to fill state
     print(action, 'filled')
-elif(spill)<0:
+elif(spill)<0: #if no spill
     print(fill[action]-Ts, 'left in', action)
